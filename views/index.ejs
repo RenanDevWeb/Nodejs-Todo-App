@@ -12,65 +12,48 @@
         <h1 class="text-center mt-3">To Do APP</h1>
 
 
-
-
 <div class="container">
-
-    <div class="card mt-3">
-        <div class="card-header">
-
-            <div class="row">
-                <div class="col-10">
-                    <input class ="form-control" type="text" name="action" id="action">
-                   </div>
-                <div class="col-1 ml-1">
-                    <button class="btn btn-primary">Adicionar</button>
-                </div>
-            </div>
-        
+  <div class="card ">
+    <div class="card-header text-white ">
+      <form method="POST" action="/salvar" >
+        <div class="row">
+          <div class="col-10">
+            <input class="form-control" type="text" name="action" id="action">
+          </div>
+          <div class="col-2"><button class="btn btn-primary botao_adicionar">Adicionar</button></div>
         </div>
-
-        <div class="card-body">
-            <table class="table">
-                <!-- <thead>
-                  <tr>
-                    <th scope="col">Action</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Exclude</th>
-                  </tr>
-                </thead> -->
-                <tbody>
-                  <tr>
-                    <th scope="row">Fazer um todo list com nodejs </th>
-                    <td> <a href="" class="btn btn-warning">Editar</a>
-                        <a href="" class="btn btn-danger">Excluir</a>
-                        
-                    </td>                
-                  </tr>
-                  <tr>
-                    <th scope="row">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nesciunt!</th>
-                    <td> <a href="" class="btn btn-warning">Editar</a>
-                        <a href="" class="btn btn-danger">Excluir</a>
-                        
-                    </td>                
-                  </tr>
-                  <tr>
-                    <th scope="row">Fazer um todo list com nodejs  e bootstrap</th>
-                    <td> <a href="" class="btn btn-warning">Editar</a>
-                        <a href="" class="btn btn-danger">Excluir</a>
-                        
-                    </td>
-                           
-                  </tr>
-                  
-                </tbody>
-              </table>
-        </div>
-</div>
-
-       
-        </div>
+      </form>
     </div>
+    <div class="card-body">
+
+      <table class="tabela_de_acoes">
+
+          <tbody >
+            <% actions.forEach(actions => { %>
+            <div class="row">
+              
+              <div class="col-10 mb-0 mt-1  fonte_padrao"><%= actions.action %> <hr></div>
+              <form method="POST" action="/excluir">
+                <input type="hidden" name="id" value="<%= actions.id %>">
+              <div class="col-2 mb-3"><button  class="btn btn-danger ml-5">Excluir</button><hr></div>
+            </form>
+            </div>
+            <% }) %>
+          </tbody>
+        </table>
+
+    </div>
+
+
+
+
+
+     
+
+
+
+
+      
 
 
 
